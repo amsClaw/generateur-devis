@@ -15,6 +15,11 @@ Léger (pas de comptes, pas de paiement, pas de données sensibles, usage local 
 
 Double-cliquer sur **`app/index.html`** (Mac ou Windows, navigateur Chrome conseillé). Aucune installation.
 
+## Guide utilisateur & code source
+
+- 📖 **Guide utilisateur en ligne** : https://amsclaw.github.io/generateur-devis/GUIDE_UTILISATEUR.html
+- 📦 **Code source** : https://github.com/amsClaw/generateur-devis
+
 ## Prochaine action
 
 Utiliser l'outil sur un vrai devis client ; préparer V1.1 (dupliquer un devis, auto-save avant export PDF, modèle personnalisable).
