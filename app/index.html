@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Générateur de devis</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="entete">
+  <h1>📄 Générateur de devis</h1>
+  <nav id="nav">
+    <button data-action="vue-liste" class="nav-btn actif">Devis</button>
+    <button data-action="vue-formulaire-nouveau" class="nav-btn">Nouveau devis</button>
+    <button data-action="vue-reglages" class="nav-btn">Réglages</button>
+  </nav>
+</header>
+
+<main>
+  <!-- VUE LISTE -->
+  <section id="vue-liste" class="vue">
+    <div class="barre-outils">
+      <input id="recherche" type="search" placeholder="Rechercher (client ou n°)…" autocomplete="off">
+      <button data-action="vue-formulaire-nouveau" class="primaire">+ Nouveau devis</button>
+    </div>
+    <div class="table-wrap">
+      <table class="table-devis">
+        <thead>
+          <tr><th>N°</th><th>Client</th><th>Date</th><th class="droite">Total TTC</th><th>Statut</th><th class="actions-col">Actions</th></tr>
+        </thead>
+        <tbody id="corps-liste"></tbody>
+      </table>
+    </div>
+    <p id="liste-vide" class="vide" hidden>Aucun devis. Créez votre premier devis !</p>
+  </section>
+
+  <!-- VUE FORMULAIRE -->
+  <section id="vue-formulaire" class="vue" hidden>
+    <h2 id="titre-formulaire">Nouveau devis</h2>
+    <form id="form-devis" novalidate>
+      <fieldset>
+        <legend>Client</legend>
+        <div class="grille">
+          <label>Nom *<input id="f-client-nom" placeholder="Nom du client / école / société" autocomplete="off"></label>
+          <label>Contact (tél / email)<input id="f-client-contact" placeholder="Optionnel" autocomplete="off"></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Prestations</legend>
+        <table class="table-lignes">
+          <thead><tr><th class="large">Libellé</th><th class="etroit">Qté</th><th class="etroit">Prix unitaire</th><th class="droite etroit">Total HT</th><th class="etroit"></th></tr></thead>
+          <tbody id="corps-lignes"></tbody>
+        </table>
+        <button type="button" data-action="ligne-ajouter" class="secondaire">+ Ajouter une ligne</button>
+      </fieldset>
+      <fieldset>
+        <legend>Totaux</legend>
+        <div class="totaux">
+          <p>Total HT : <strong id="total-ht">0</strong></p>
+          <p>TVA (<input id="f-tva" type="number" min="0" max="100" step="0.5" class="tva-input"> %) : <strong id="total-tva">0</strong></p>
+          <p class="grand">Total TTC : <strong id="total-ttc">0</strong></p>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Détails</legend>
+        <label>Notes (délais, méthodo…)<textarea id="f-notes" rows="2"></textarea></label>
+        <label>Conditions de paiement<textarea id="f-conditions" rows="2" placeholder="Ex : 50 % à la commande, solde à la livraison — virement ou mobile money"></textarea></label>
+        <label>Statut<select id="f-statut">
+          <option>brouillon</option><option>envoyé</option><option>accepté</option><option>refusé</option>
+        </select></label>
+      </fieldset>
+      <div id="erreurs-form" class="erreurs" hidden></div>
+      <div class="actions">
+        <button type="submit" class="primaire">💾 Enregistrer</button>
+        <button type="button" data-action="devis-pdf" class="secondaire">🖨️ Exporter PDF</button>
+        <button type="button" data-action="vue-liste" class="neutre">Annuler</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- VUE REGLAGES -->
+  <section id="vue-reglages" class="vue" hidden>
+    <h2>Réglages</h2>
+    <fieldset>
+      <legend>Identité (affichée sur le devis)</legend>
+      <div class="grille">
+        <label>Nom<input id="r-nom" placeholder="Votre nom / société"></label>
+        <label>Contact<input id="r-contact" placeholder="Tél / email / adresse"></label>
+        <label>Devise<input id="r-devise" value="€" size="4"></label>
+      </div>
+      <label>TVA par défaut (%)<input id="r-tva" type="number" min="0" max="100" step="0.5"></label>
+    </fieldset>
+    <fieldset>
+      <legend>Sauvegarde</legend>
+      <div class="actions">
+        <button data-action="exporter-json" class="secondaire">⬇️ Exporter (devis.json)</button>
+        <button data-action="importer-json" class="secondaire">⬆️ Restaurer (devis.json)</button>
+      </div>
+      <input id="fichier-import" type="file" accept=".json" hidden>
+      <p class="note">Les données vivent dans ce navigateur (localStorage). Exportez régulièrement un fichier <code>devis.json</code> pour sauvegarder ou changer d'ordinateur.</p>
+    </fieldset>
+    <div class="actions">
+      <button data-action="sauver-reglages" class="primaire">💾 Enregistrer les réglages</button>
+      <button data-action="vue-liste" class="neutre">Retour</button>
+    </div>
+  </section>
+</main>
+
+<div id="print-area" aria-hidden="true"></div>
+
+<script src="logique.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

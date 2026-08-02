@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide utilisateur — Générateur de devis</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+         background: #f4f6f9; color: #1c2333; line-height: 1.6; }
+  header { background: #16324f; color: #fff; padding: 28px 20px; text-align: center; }
+  header h1 { font-size: 1.6rem; }
+  header p { color: #cfdff0; margin-top: 6px; }
+  main { max-width: 860px; margin: 24px auto; padding: 0 16px; }
+  section { background: #fff; border-radius: 12px; padding: 22px; margin-bottom: 18px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  h2 { color: #16324f; font-size: 1.2rem; border-bottom: 2px solid #2e6da4;
+       padding-bottom: 6px; margin-bottom: 14px; }
+  h3 { color: #2e6da4; margin: 16px 0 8px; }
+  .sommaire ul { margin-left: 20px; }
+  .sommaire a { color: #2e6da4; }
+  img.capture { display: block; max-width: 100%; border: 1px solid #dbe3ec;
+                border-radius: 8px; margin: 10px 0; }
+  .etape { background: #f0f5fb; border-left: 4px solid #2e6da4; border-radius: 6px;
+           padding: 10px 14px; margin: 8px 0; }
+  .etape b { color: #16324f; }
+  code { background: #eef1f5; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+  th, td { border: 1px solid #dbe3ec; padding: 8px 10px; text-align: left; }
+  th { background: #e8eef5; color: #16324f; }
+  .note { background: #fff8e1; border-left: 4px solid #f0a020; padding: 10px 14px;
+          border-radius: 6px; margin: 10px 0; font-size: .92rem; }
+  footer { text-align: center; color: #8a97a8; font-size: .85rem; padding: 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📖 Guide utilisateur — Générateur de devis</h1>
+  <p>Version 1.0 · 02/08/2026 · Guide complet d'utilisation</p>
+</header>
+
+<main>
+
+  <!-- ===== SOMMAIRE ===== -->
+  <section class="sommaire">
+    <h2>Sommaire</h2>
+    <ul>
+      <li><a href="#demarrage">1. Démarrage rapide</a></li>
+      <li><a href="#ecrans">2. Description des écrans</a></li>
+      <li><a href="#parcours">3. Parcours utilisateur (workflows)</a></li>
+      <li><a href="#faq">4. Questions fréquentes (FAQ)</a></li>
+      <li><a href="#support">5. Support</a></li>
+    </ul>
+  </section>
+
+  <!-- ===== 1. DÉMARRAGE RAPIDE ===== -->
+  <section id="demarrage">
+    <h2>1. Démarrage rapide</h2>
+    <p>Le générateur de devis crée des devis PDF professionnels en moins de 5 minutes : numérotation automatique, calculs exacts (HT / TVA / TTC) et historique consultable. Tout se passe sur votre ordinateur, aucune installation ni connexion internet nécessaire.</p>
+    <div class="etape"><b>Étape 1 :</b> Double-cliquez sur le fichier <code>index.html</code> (dossier <code>app/</code>). L'application s'ouvre dans votre navigateur (Chrome recommandé).</div>
+    <div class="etape"><b>Étape 2 :</b> Cliquez sur <b>« + Nouveau devis »</b>, remplissez le client et les prestations : les totaux se calculent tout seuls.</div>
+    <div class="etape"><b>Étape 3 :</b> Cliquez sur <b>« 💾 Enregistrer »</b> : le devis reçoit un numéro automatique (<code>DEV-2026-001</code>…).</div>
+    <div class="etape"><b>Étape 4 :</b> Cliquez sur <b>« 🖨️ Exporter PDF »</b> et choisissez « Enregistrer au format PDF » pour envoyer le devis à votre client.</div>
+    <p class="note">💡 <b>Astuce :</b> pensez à exporter régulièrement vos devis via <b>Réglages → Exporter</b> pour garder une sauvegarde portable (fichier <code>devis.json</code>).</p>
+  </section>
+
+  <!-- ===== 2. DESCRIPTION DES ÉCRANS ===== -->
+  <section id="ecrans">
+    <h2>2. Description des écrans</h2>
+
+    <h3>2.1 Écran « Liste des devis »</h3>
+    <p>Écran d'accueil : tous vos devis, du plus récent au plus ancien. Recherche par client ou numéro, et accès aux actions (ouvrir, PDF, supprimer).</p>
+    <img class="capture" src="captures/ecran-liste.png" alt="Capture : liste des devis">
+    <table>
+      <tr><th>Élément</th><th>Description</th></tr>
+      <tr><td>Barre de recherche</td><td>Filtre les devis par nom de client ou numéro (ex. « Conakry », « DEV-2026 »)</td></tr>
+      <tr><td>Colonne N°</td><td>Numéro unique automatique du devis (ex. DEV-2026-001)</td></tr>
+      <tr><td>Colonne Total TTC</td><td>Montant toutes taxes comprises, recalculé automatiquement</td></tr>
+      <tr><td>Colonne Statut</td><td>État du devis : brouillon / envoyé / accepté / refusé</td></tr>
+      <tr><td>✏️</td><td>Ouvrir et modifier le devis</td></tr>
+      <tr><td>🖨️</td><td>Exporter le devis en PDF</td></tr>
+      <tr><td>🗑️</td><td>Supprimer le devis (demande confirmation)</td></tr>
+      <tr><td>« + Nouveau devis »</td><td>Créer un nouveau devis</td></tr>
+    </table>
+
+    <h3>2.2 Écran « Formulaire de devis »</h3>
+    <p>Écran de création et d'édition : le client, les prestations (lignes), la TVA, les notes et les conditions. Les totaux se mettent à jour à chaque saisie.</p>
+    <img class="capture" src="captures/ecran-formulaire.png" alt="Capture : formulaire de devis">
+    <table>
+      <tr><th>Élément</th><th>Description</th></tr>
+      <tr><td>Nom *</td><td>Nom du client (obligatoire)</td></tr>
+      <tr><td>Contact</td><td>Téléphone / email du client (optionnel)</td></tr>
+      <tr><td>Tableau Prestations</td><td>Une ligne par prestation : libellé, quantité, prix unitaire — total HT par ligne calculé</td></tr>
+      <tr><td>« + Ajouter une ligne »</td><td>Ajoute une prestation supplémentaire</td></tr>
+      <tr><td>✕ (sur une ligne)</td><td>Retire la prestation</td></tr>
+      <tr><td>TVA (%)</td><td>Taux appliqué (pré-rempli avec votre valeur par défaut, ex. 18 %)</td></tr>
+      <tr><td>Total HT / TVA / TTC</td><td>Récapitulatif calculé automatiquement</td></tr>
+      <tr><td>Notes</td><td>Délais, méthodologie… (affiché sur le PDF)</td></tr>
+      <tr><td>Conditions de paiement</td><td>Ex. « 50 % à la commande, solde à la livraison » (affiché sur le PDF)</td></tr>
+      <tr><td>Statut</td><td>brouillon / envoyé / accepté / refusé</td></tr>
+      <tr><td>💾 Enregistrer</td><td>Valide et sauvegarde le devis</td></tr>
+      <tr><td>🖨️ Exporter PDF</td><td>Génère le PDF à partir du formulaire en cours</td></tr>
+    </table>
+
+    <h3>2.3 Écran « Réglages »</h3>
+    <p>Votre identité (affichée en tête de devis), la devise, la TVA par défaut, et la sauvegarde/restauration des données.</p>
+    <img class="capture" src="captures/ecran-reglages.png" alt="Capture : réglages">
+    <table>
+      <tr><th>Élément</th><th>Description</th></tr>
+      <tr><td>Nom / Contact</td><td>Votre identité affichée sur chaque devis PDF</td></tr>
+      <tr><td>Devise</td><td>Symbole monétaire (€, GNF, FCFA…)</td></tr>
+      <tr><td>TVA par défaut (%)</td><td>Taux pré-rempli lors de la création d'un devis</td></tr>
+      <tr><td>⬇️ Exporter (devis.json)</td><td>Télécharge une sauvegarde de tous vos devis</td></tr>
+      <tr><td>⬆️ Restaurer (devis.json)</td><td>Recharge une sauvegarde (sur ce poste ou un autre)</td></tr>
+      <tr><td>💾 Enregistrer les réglages</td><td>Applique et sauvegarde vos réglages</td></tr>
+    </table>
+
+    <h3>2.4 Document PDF exporté</h3>
+    <p>Le devis exporté en PDF : en-tête (votre identité, numéro, date, client, statut), tableau des prestations, totaux HT/TVA/TTC, notes et conditions. Format A4, prêt à envoyer.</p>
+    <img class="capture" src="captures/apercu-pdf.png" alt="Capture : aperçu du devis PDF">
+  </section>
+
+  <!-- ===== 3. PARCOURS UTILISATEUR ===== -->
+  <section id="parcours">
+    <h2>3. Parcours utilisateur (workflows)</h2>
+
+    <h3>Parcours 1 — Créer un devis de A à Z</h3>
+    <div class="etape"><b>1.</b> Ouvrez l'application (double-clic sur <code>index.html</code>)</div>
+    <div class="etape"><b>2.</b> Cliquez sur <b>« + Nouveau devis »</b></div>
+    <div class="etape"><b>3.</b> Saisissez le client (nom obligatoire, contact optionnel)</div>
+    <div class="etape"><b>4.</b> Renseignez les prestations : libellé, quantité, prix unitaire — les totaux se calculent en direct</div>
+    <div class="etape"><b>5.</b> Vérifiez la TVA (18 % par défaut), ajoutez notes et conditions de paiement si besoin</div>
+    <div class="etape"><b>6.</b> Cliquez sur <b>« 💾 Enregistrer »</b> → le devis reçoit son numéro (DEV-2026-001) et apparaît dans la liste</div>
+    <div class="etape"><b>7.</b> Cliquez sur <b>« 🖨️ Exporter PDF »</b> → « Enregistrer au format PDF » → envoyez le fichier à votre client</div>
+
+    <h3>Parcours 2 — Modifier un devis existant</h3>
+    <div class="etape"><b>1.</b> Dans la liste, cliquez sur <b>✏️</b> à côté du devis</div>
+    <div class="etape"><b>2.</b> Modifiez les champs souhaités (prix, lignes, statut…)</div>
+    <div class="etape"><b>3.</b> Cliquez sur <b>« 💾 Enregistrer »</b> — le numéro et la date d'origine sont conservés</div>
+
+    <h3>Parcours 3 — Suivre le statut d'un devis</h3>
+    <div class="etape"><b>1.</b> Ouvrez le devis (✏️)</div>
+    <div class="etape"><b>2.</b> Changez le statut : brouillon → envoyé → accepté / refusé</div>
+    <div class="etape"><b>3.</b> Enregistrez — le statut est conservé et visible dans la liste</div>
+
+    <h3>Parcours 4 — Sauvegarder et changer d'ordinateur</h3>
+    <div class="etape"><b>1.</b> Allez dans <b>Réglages</b></div>
+    <div class="etape"><b>2.</b> Cliquez sur <b>« ⬇️ Exporter »</b> → le fichier <code>devis.json</code> est téléchargé</div>
+    <div class="etape"><b>3.</b> Sur l'autre ordinateur : <b>Réglages → « ⬆️ Restaurer »</b> → choisissez ce fichier → tous vos devis reviennent</div>
+  </section>
+
+  <!-- ===== 4. FAQ ===== -->
+  <section id="faq">
+    <h2>4. Questions fréquentes</h2>
+    <h3>L'application ne s'ouvre pas sur mon ordinateur ?</h3>
+    <p>Vérifiez que vous double-cliquez bien sur <code>index.html</code> dans le dossier <code>app/</code>. Utilisez Chrome ou Edge pour le meilleur rendu du PDF.</p>
+    <h3>Où sont stockées mes données ?</h3>
+    <p>Dans votre navigateur (localStorage). Elles restent sur votre machine — c'est volontaire (pas de cloud). Pensez à exporter régulièrement le fichier <code>devis.json</code> pour sauvegarder.</p>
+    <h3>Comment changer la devise (€ → GNF) ?</h3>
+    <p>Réglages → champ « Devise » → saisissez le symbole souhaité → « 💾 Enregistrer les réglages ».</p>
+    <h3>Puis-je créer une facture à partir d'un devis ?</h3>
+    <p>Pas encore — c'est prévu dans une version future. Le devis accepté servira de base.</p>
+    <h3>Un devis supprimé peut-il être récupéré ?</h3>
+    <p>Uniquement si vous avez exporté un <code>devis.json</code> avant la suppression (Restaurer le fichier).</p>
+  </section>
+
+  <!-- ===== 5. SUPPORT ===== -->
+  <section id="support">
+    <h2>5. Support</h2>
+    <p>Besoin d'aide ou d'une évolution ? Contactez votre référent.</p>
+    <p>Version : 1.0 · App locale sans dépendance · Projet : générateur de devis (AAS V0.2.2, 2026-08-02)</p>
+  </section>
+
+</main>
+
+<footer>Guide généré le 02/08/2026 — Générateur de devis V1.0</footer>
+
+</body>
+</html>
